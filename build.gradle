@@ -1,18 +1,28 @@
 buildscript {
-    repositories { jcenter() }
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+    }
 
     dependencies {
         classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.+'
+        classpath 'com.netflix.nebula:gradle-netflixoss-project-plugin:5.1.1'
+        classpath "gradle.plugin.org.akhikhl.gretty:gretty:2.0.0"
     }
 }
 
+
 plugins {
     id 'nebula.netflixoss' version '3.6.0'
+    id "org.akhikhl.gretty" version "2.0.0"
 }
 
 idea {
     project {
-        languageLevel = '1.7'
+        languageLevel = '1.8'
     }
 }
 
@@ -52,8 +62,8 @@ subprojects {
 
     group = "com.netflix.${githubProjectName}"
 
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     repositories {
         jcenter()
